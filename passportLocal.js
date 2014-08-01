@@ -7,9 +7,9 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var testUrl = "mongodb://localhost/localDb";
-app.use(app.router);
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(app.router);
 passport.serializeUser(function (user, done) {
     console.log('hello');
     done(null, user);
@@ -78,8 +78,8 @@ app.get('/login', function (req, res) {
 
 app.post('/login',
     passport.authenticate('local', {
-        successRedirect: '/loginSuccess',
-        failureRedirect: '/loginFailure'
+            successRedirect: '/loginSuccess',
+            failureRedirect: '/loginFailure'
     })
 );
 
